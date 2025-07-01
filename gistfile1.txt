@@ -1,0 +1,16 @@
+# Applied ML Project
+
+Implement a FLUX.1 [dev] fal serverless application.
+
+Use https://docs.fal.ai/private-serverless-apps to get started.
+
+The application should have a route for text to image and a route for image to image.
+
+Goals for the ~2 day trial:
+- A working application that can be deployed to a serverless platform.
+- Error handling and helpful error messages.
+
+Extra goals (plus points, if not completed we might tackle one of them at on-site):
+- Improve the speed. 
+- Improve the quality with training free modifications.
+- Add additional functionality to the pipeline.
