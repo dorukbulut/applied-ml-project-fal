@@ -7,8 +7,8 @@ Use https://docs.fal.ai/private-serverless-apps to get started.
 The application should have a route for text to image and a route for image to image. Additionally, it should have a modification to attention mechanism. 
 
 We want to combine the ideas of Perturbed Attention Guidance and Normalized Attention Guidance in the following ways:
-- Like NAG, we will compute two attention maps, combine them with weight parameter and normalize them.
-- Unlike NAG, but like the PAG, the "negative" attention map will be an identity matrix. 
+- Like NAG, we will compute feature vectors, combine them with weight parameter and normalize them.
+- Unlike NAG, but like the PAG, the "negative" attention map will be an identity matrix and not based on a negative prompt.
 
 Goals for the ~2 day trial:
 - A working application that can be deployed to a serverless platform.
