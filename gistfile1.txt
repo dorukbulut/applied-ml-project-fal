@@ -4,13 +4,18 @@ Implement a FLUX.1 [dev] fal serverless application.
 
 Use https://docs.fal.ai/private-serverless-apps to get started.
 
-The application should have a route for text to image and a route for image to image.
+The application should have a route for text to image and a route for image to image. Additionally, it should have a modification to attention mechanism. 
+
+We want to combine the ideas of Perturbed Attention Guidance and Normalized Attention Guidance in the following ways:
+- Like NAG, we will compute two attention maps, combine them with weight parameter and normalize them.
+- Unlike NAG, but like the PAG, the "negative" attention map will be an identity matrix. 
 
 Goals for the ~2 day trial:
 - A working application that can be deployed to a serverless platform.
 - Error handling and helpful error messages.
+- Our novel NAG/PAG option.
 
 Extra goals (plus points, if not completed we might tackle one of them at on-site):
 - Improve the speed. 
-- Improve the quality with training free modifications.
-- Add additional functionality to the pipeline.
+- Extend the pipeline with additional functionality.
+
