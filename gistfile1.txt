@@ -19,3 +19,5 @@ Extra goals (plus points, if not completed we might tackle one of them at on-sit
 - Improve the speed. 
 - Extend the pipeline with additional functionality.
 
+To get started, email jonathan@fal.ai with your github username. Jonathan will grant your account SDK access and place credits in your account.
+
