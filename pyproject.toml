@@ -1,0 +1,9 @@
+[project]
+name = "7673dc3da9d79df25925dd94120957ba"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.11.11"
+dependencies = [
+    "fal==1.26.2",
+]
