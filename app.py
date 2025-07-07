@@ -39,8 +39,8 @@ class ImageGenApp(fal.App, keep_alive=300, name="fal-image-gen-app"):
     requirements = [
         "hf-transfer==0.1.9",
         "transformers[sentencepiece]==4.51.0",
-        "accelerate==1.6.0",
         "numpy",
+        "accelerate==1.6.0",
         "git+https://github.com/dorukbulut/flux-nag-pag.git",
         "huggingface-hub==0.33.2",
         "torchvision==0.22.1",
