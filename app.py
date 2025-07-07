@@ -11,12 +11,22 @@ class TextRequest(BaseModel):
         description="The text prompt to be processed. to create a new image.",
         examples=["A beautiful sunset over the mountains"]
     )
+    guidance: float = Field(
+        default=3.5,
+        description="The guidance scale for the image generation. Higher values lead to more adherence to the prompt.",
+        examples=[3.5, 7.0]
+    )
 
 class ImageRequest(BaseModel):
     image_url: str
     prompt: str = Field(
         description="The text prompt to be processed. to create a new image.",
         examples=["Remove the noise from the image"]
+    )
+    guidance: float = Field(
+        default=3.5,
+        description="The guidance scale for the image generation. Higher values lead to more adherence to the prompt.",
+        examples=[3.5, 7.0]
     )
 
 
@@ -30,11 +40,10 @@ class ImageGenApp(fal.App, keep_alive=300, name="fal-image-gen-app"):
         "hf-transfer==0.1.9",
         "transformers[sentencepiece]==4.51.0",
         "accelerate==1.6.0",
-        "pandas",
+        "numpy",
         "git+https://github.com/dorukbulut/flux-nag-pag.git",
         "huggingface-hub==0.33.2",
         "torchvision==0.22.1",
-        
     ]
 
 
@@ -78,8 +87,8 @@ class ImageGenApp(fal.App, keep_alive=300, name="fal-image-gen-app"):
             prompt=request.prompt,
             width=1024,
             height=768,
-            num_steps=10,
-            guidance=3.5,
+            num_steps=25,
+            guidance=request.guidance,
             seed=42
         )
         image = Image.from_pil(result)
@@ -95,7 +104,7 @@ class ImageGenApp(fal.App, keep_alive=300, name="fal-image-gen-app"):
             init_image=req_image,
             strength=0.7,
             num_steps=50,
-            guidance=3.5,
+            guidance=request.guidance,
             seed=42
         )
         res_image = Image.from_pil(result)
