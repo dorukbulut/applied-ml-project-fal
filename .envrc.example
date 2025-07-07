@@ -1,0 +1,3 @@
+# source .venv/bin/activate
+# fal secrets set HF_TOKEN=<your_hugging_face_token> 
+# other dir load commands goes here.

@@ -136,7 +136,39 @@ class ImageGenApp(fal.App, keep_alive=300, name="fal-image-gen-app"):
             raise RuntimeError(f"Failed to initialize application: {e}")
 
     def warmup(self):
-        pass
+        try:
+            import numpy as np
+            from PIL import Image as PILImage
+
+            _ = self.inference_engine.text_to_image(
+                prompt="test",
+                width=512,
+                height=512,
+                num_steps=1,
+                guidance=1.0,
+                pag_weight=0.0,
+                tau=1.0,
+                seed=42,
+            )
+
+            noise_array = np.random.randint(0, 255, (512, 512, 3), dtype=np.uint8)
+            noise_image = PILImage.fromarray(noise_array, "RGB")
+
+            _ = self.inference_engine.image_to_image(
+                prompt="test",
+                init_image=noise_image,
+                strength=0.5,
+                width=512,
+                height=512,
+                num_steps=1,
+                guidance=1.0,
+                pag_weight=0.0,
+                tau=1.0,
+                seed=42,
+            )
+
+        except Exception as e:
+            raise RuntimeError(f"Warmup failed: {e}")
 
     @fal.endpoint("/flux/dev/text-to-image/")
     def text_to_image(
