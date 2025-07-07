@@ -170,7 +170,7 @@ class ImageGenApp(fal.App, keep_alive=300, name="fal-image-gen-app"):
         except Exception as e:
             raise RuntimeError(f"Warmup failed: {e}")
 
-    @fal.endpoint("/flux/dev/text-to-image/")
+    @fal.endpoint("/flux/dev/text-to-image")
     def text_to_image(
         self, request: TextRequest
     ) -> Union[ImageResponse, ErrorResponse]:
@@ -203,7 +203,7 @@ class ImageGenApp(fal.App, keep_alive=300, name="fal-image-gen-app"):
                 "Image generation failed", "GENERATION_ERROR", str(e)
             )
 
-    @fal.endpoint("/flux/dev/image-to-image/")
+    @fal.endpoint("/flux/dev/image-to-image")
     def image_to_image(
         self, request: ImageRequest
     ) -> Union[ImageResponse, ErrorResponse]:
